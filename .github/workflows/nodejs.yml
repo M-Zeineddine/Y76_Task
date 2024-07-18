@@ -17,6 +17,13 @@ jobs:
       run: ls -al
       working-directory: Y76Backend  # Corrected: Remove the leading ./
 
+    - name: Check if package-lock.json exists
+      run: |
+        if [ ! -f Y76Backend/package-lock.json ]; then
+          echo "Error: package-lock.json not found!"
+          exit 1
+        fi
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
