@@ -10,9 +10,11 @@ router.get('/', authenticateToken, async (req, res) => {
         const result = await pool.request().query('SELECT * FROM Tasks');
         res.json(result.recordset);
     } catch (err) {
-        res.status(500).send(err.message);
+        console.error(err.message); // Log detailed error
+        res.status(500).send('Error fetching tasks');
     }
 });
+
 
 router.post('/', authenticateToken, async (req, res) => {
     const { name, description, is_completed } = req.body;
