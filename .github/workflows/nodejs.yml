@@ -27,30 +27,11 @@ jobs:
       run: ls -al
       working-directory: ./Y76Backend
 
-    - name: Clear npm cache
-      run: npm cache clean --force
+    - name: Print npm config
+      run: npm config list
       working-directory: ./Y76Backend
 
-    - name: Install dependencies using full path
-      run: npm ci --package-lock ./Y76Backend/package-lock.json
+    - name: Debugging - Check for package-lock.json explicitly
+      run: if [ -f package-lock.json ]; then echo "package-lock.json exists"; else echo "package-lock.json does not exist"; fi
       working-directory: ./Y76Backend
 
-    - name: Run build
-      run: npm run build
-      working-directory: ./Y76Backend
-
-    - name: Run tests
-      run: npm test
-      working-directory: ./Y76Backend
-
-    - name: Deploy to Production
-      run: ./deploy.sh
-      working-directory: ./Y76Backend
-      env:
-        NODE_ENV: production
-        DB_USER: ${{ secrets.DB_USER }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_SERVER: ${{ secrets.DB_SERVER }}
-        DB_DATABASE: ${{ secrets.DB_DATABASE }}
-        JWT_SECRET: ${{ secrets.JWT_SECRET }}
-        HASHED_PASSWORD: ${{ secrets.HASHED_PASSWORD }}
