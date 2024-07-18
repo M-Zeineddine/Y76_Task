@@ -18,6 +18,7 @@ jobs:
       with:
         node-version: '16.x'
         cache: 'npm'
+        working-directory: ./Y76Backend  # Ensure this directory is correctly set if needed
 
     - name: Clear npm cache
       run: npm cache clean --force
