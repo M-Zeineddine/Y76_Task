@@ -31,9 +31,8 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm install
-      working-directory: Y76Backend
-
+      run: npm ci
+      working-directory: Y76Backend  # Corrected: Remove the leading ./
 
     - name: Run build
       run: npm run build
