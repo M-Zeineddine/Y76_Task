@@ -40,4 +40,9 @@ jobs:
       working-directory: ./Y76Backend
       env:
         NODE_ENV: production
-        # Other environment variables...
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_SERVER: ${{ secrets.DB_SERVER }}
+        DB_DATABASE: ${{ secrets.DB_DATABASE }}
+        JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        HASHED_PASSWORD: ${{ secrets.HASHED_PASSWORD }}
