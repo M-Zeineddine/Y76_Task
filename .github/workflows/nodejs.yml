@@ -2,9 +2,9 @@ name: Node.js CI/CD
 
 on:
   push:
-    branches: [ master ]  # Change from main to master
+    branches: [ master ]  # This triggers the workflow on pushes to the master branch
   pull_request:
-    branches: [ master ]  # Change from main to master
+    branches: [ master ]  # This triggers the workflow on pull requests to the master branch
 
 jobs:
   build:
@@ -35,10 +35,9 @@ jobs:
     - name: Deploy to Production
       if: github.ref == 'refs/heads/master'
       run: ./deploy.sh
-      env:
-        NODE_ENV: production
       working-directory: ./Y76Backend
       env:
+        NODE_ENV: production
         DB_USER: ${{ secrets.DB_USER }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_SERVER: ${{ secrets.DB_SERVER }}
