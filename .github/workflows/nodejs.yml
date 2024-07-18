@@ -18,18 +18,21 @@ jobs:
       with:
         node-version: '16.x'
         cache: 'npm'
-        working-directory: ./Y76Backend  # Ensure this directory is correctly set if needed
+
+    - name: Print current directory
+      run: pwd
+      working-directory: ./Y76Backend
+
+    - name: Print contents of the Y76Backend directory
+      run: ls -al
+      working-directory: ./Y76Backend
 
     - name: Clear npm cache
       run: npm cache clean --force
       working-directory: ./Y76Backend
 
-    - name: Print npm config
-      run: npm config list
-      working-directory: ./Y76Backend
-
-    - name: Install dependencies
-      run: npm ci
+    - name: Install dependencies using full path
+      run: npm ci --package-lock ./Y76Backend/package-lock.json
       working-directory: ./Y76Backend
 
     - name: Run build
@@ -45,8 +48,6 @@ jobs:
       working-directory: ./Y76Backend
       env:
         NODE_ENV: production
-        # Other environment variables...
-
         DB_USER: ${{ secrets.DB_USER }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_SERVER: ${{ secrets.DB_SERVER }}
