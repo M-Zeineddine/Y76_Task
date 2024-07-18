@@ -4,9 +4,13 @@ const routes = require('./routes');
 
 const app = express();
 app.use(bodyParser.json());
-
-// Route handlers
 app.use('/api', routes);
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server running on port ${port}`));
+// Export the app for testing
+module.exports = app;
+
+// Start the server only if running this file directly
+if (require.main === module) {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Server running on port ${port}`));
+}
