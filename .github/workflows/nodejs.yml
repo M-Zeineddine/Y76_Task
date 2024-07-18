@@ -14,30 +14,30 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: List files in the working directory
-      run: ls -la
-      working-directory: ./Y76Backend
+      run: ls -al
+      working-directory: Y76Backend  # Corrected: Remove the leading ./
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '16.x'
         cache: 'npm'
-    
+
     - name: Install dependencies
       run: npm ci
-      working-directory: ./Y76Backend
+      working-directory: Y76Backend  # Corrected: Remove the leading ./
 
     - name: Run build
       run: npm run build
-      working-directory: ./Y76Backend
+      working-directory: Y76Backend  # Corrected: Remove the leading ./
 
     - name: Run tests
       run: npm test
-      working-directory: ./Y76Backend
+      working-directory: Y76Backend  # Corrected: Remove the leading ./
 
     - name: Deploy to Production
       run: ./deploy.sh
-      working-directory: ./Y76Backend
+      working-directory: Y76Backend  # Corrected: Remove the leading ./
       env:
         NODE_ENV: production
         DB_USER: ${{ secrets.DB_USER }}
