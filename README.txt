@@ -18,7 +18,6 @@ Install dependencies:
 npm install
 
 Set up environment variables:
-Copy the .env.example file to a new file named .env.
 Update the .env file with your database credentials and JWT secret.
 
 Start the application:
@@ -70,3 +69,9 @@ npm test
 
 Deployment
 Deployment scripts and CI/CD configurations are set up using GitHub Actions, which automate the deployment process upon commits to the repository.
+
+
+
+
+Extra Note
+I have saved the chat with the LLM, which includes all the prompts and responses. I can share it with you through a screen recording or screen sharing. Unfortunately, I can't share it as a link because it contains pictures, which prevents me from doing so.
